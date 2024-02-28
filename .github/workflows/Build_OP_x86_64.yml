@@ -54,9 +54,9 @@ jobs:
         path: |
           ./tmp
           ./feeds
-        key: ${{ runner.os }}-openwrt-${{ hashFiles('**/Makefile', '**/.config') }}
+        key: x86_64-openwrt-${{ hashFiles('**/Makefile', '**/.config') }}
         restore-keys: |
-          ${{ runner.os }}-openwrt
+          x86_64-openwrt
           
     - name: Update & Install feeds
       working-directory: ./openwrt
