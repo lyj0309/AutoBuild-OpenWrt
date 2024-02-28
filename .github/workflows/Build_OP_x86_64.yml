@@ -48,6 +48,16 @@ jobs:
         cd openwrt
         echo "src-git ssrp https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
         
+    - name: update cache
+      uses: actions/cache@v2
+      with:
+        path: |
+          ./tmp
+          ./feeds
+        key: ${{ runner.os }}-openwrt-${{ hashFiles('**/Makefile', '**/.config') }}
+        restore-keys: |
+          ${{ runner.os }}-openwrt
+          
     - name: Update & Install feeds
       working-directory: ./openwrt
       run: |
